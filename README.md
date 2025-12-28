@@ -76,5 +76,5 @@ This section lists all design principles Ed follows, varying from code structure
 
 # Index
 
-IDF¹ - Internation Date Format (YY/MM/DD >> Year/Month/Day)
-BIOS² - Basic Input Output System | System first used by the CPU when booting up your hardware, and plays a major key in OS development for creating the bootloading and learning more about the CPU
+IDF¹ - Internation Date Format (YY/MM/DD >> Year/Month/Day)   
+BIOS² - Basic Input Output System | System first used by the CPU when booting up your hardware, and plays a major key in OS development for creating the bootloading and learning more about the CPU   
