@@ -1,6 +1,6 @@
 # Official Ed Operating-System Manual
 
-### Last Modified: 26/12/25 (International Date Format)
+### Last Modified: 25/12/28 (International Date Format)
 ### Copyright 2025 © Averi
 
 ---
