@@ -43,6 +43,22 @@ The Ed Operating System has had many weeks of planning for it's design, architec
 
 With things you want to happen, you also don't want to happen, EdOS also has many things it doesn't want for its goals, a non-goal. One of Ed's biggest non-goals is POSIX-Complaint. Ed strives to be its own independent piece of technology, that is separate from the rest, while still being talked to at levels of others. Another major one is excessive features; Windows is a major example of having large applications on install. EdOS does want to give *some* form of pre-installed applications, as in clocks, mini-tetris clone, etc, but nothing worth lowering the disk space absurdly.
 
+### 1.4 Why x86_64?
+
+The x86_64 architecture (Also referred to as x64 or AMD64) was chosen for several practical reason, one of the most being the fact that almost every modern desktop and laptop uses x86_64 processors. This means you can test EdOS on actual hardware you already own, not just in emulators.
+
+Over the past 4 decades, the x86 family have been in development & produced dozens of technical resources. Intel and AMD publish comprehensive software developer manuals that document every instruction, register, and system behavior in exhaustive detail. Beyond official documentation, there's a massive community of OS developers and computer scientists who've tackled similar problems, written tutorials, and shared solutions. 
+
+Due to the on-going documentation and continuous use of x86_64, we've been able to create things known as cross-compilers, talked about more in-depth during **Chapter 12: The Cross-Compiler**, **Part IV: Toolchain & Build System**. The GNU toolchain (*binutils* & *GCC*) have been in active development and have excellent x86_64 support. This allows for any x86_64 system to run our code, without the need of a specified OS for system calls.
+
+x86_64 is a major architecture used for running most servers, desktops, and many other mainstream technology. Knowing how x86_64 works is needed when programming low level systems and talking to your hardware. The major relevance in x86_64 is not purely where it's used, but also how you can use it, *long mode* (x86_64's native 64-bit mode) provides a cleaner programming model than its 32-bit predecessor. Although having to boot through legacy modes (*real mode* and *protected mode*, only via the **BIOS**²), once reaching long mode, developing an operating system becomes straightforward. The use of a 64-bit address space eliminates many of the memory limitations that was in legacy 32-bit systems; the extended register set (16 general-purpose registers instead of 8) makes compiler code generation more efficient.
+
+Although x86_64 might seem like the instant go-to for everything tech related, there are still other processing types being used, mainly **ARM** & **RISC-V**. ARM is simpler, and increasingly popular, especially in the mobile and systems industry. Although ARM is largely used, it's hard to use on real hardware besides boards like a *Raspberry Pi* or similar board. ARM's extreme simplicity is what makes it such a limited piece of technology, and a major drawback for learning. The other one to talk about, RISC-V is an open-source project, making it widely used for academic projects, and has been experiencing rapid growth by major companies and a major key in automative systems, AI, and data centers. However, similarly to ARM, it is hard to test on real hardware, although not from its technical capabilities, but due to its rare and expensive use in said technology/hardware. Its lack of mature tooling & smaller communties outside of closed source companies versions has left it to not be used often by the public unless for niche, specific scenarios.
+
+Some new to computer science, or low level programming might say that x86_64 is too complex for learning, with its variable-length instruction, confusing interrupt handling, and other features. But all of these are features for a reason, not purposeful complexity. Many real-world systems are messy, and learning to handle such messiness is a great way to learn. x86_64 teaches you how to work with legacy constraints, backward compatibility requirements, and other hardware systems.
+
+The decision to use x86_64 ultimataly comes down to practicality, it's well-documented, widely used & available, and directly applicable to real-world systems. While other architectures might be academically cleaner, x86_64 offers the best balance of accessibility, resources, and real-world relevance for OS development.
+
 ---
 
 # Appendices
@@ -53,7 +69,7 @@ This section lists all design principles Ed follows, varying from code structure
 
 - Transparency over abstraction   
 - Simplicity before features   
--  Document the struggles, not just the successes   
+- Document the struggles, not just the successes   
 - Minimal dependencies on external libraries   
 - Test on real hardware, not just emulators   
 - Performance optimizations require benchmarks   
@@ -61,3 +77,4 @@ This section lists all design principles Ed follows, varying from code structure
 # Index
 
 IDF¹ - Internation Date Format (YY/MM/DD >> Year/Month/Day)
+BIOS² - Basic Input Output System | System first used by the CPU when booting up your hardware, and plays a major key in OS development for creating the bootloading and learning more about the CPU
